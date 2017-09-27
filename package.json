@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/IoTSotA/iot-gateway#readme",
   "devDependencies": {
+    "coap": "^0.21.0",
     "mosca": "^2.5.2",
     "request": "^2.83.0"
   }
