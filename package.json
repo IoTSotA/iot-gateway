@@ -1,0 +1,31 @@
+{
+  "name": "iot-gateway",
+  "version": "1.0.0",
+  "description": "Gateway for the activities of IoTSotA",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IoTSotA/iot-gateway.git"
+  },
+  "keywords": [
+    "iot",
+    "gateway",
+    "iotsota",
+    "coap",
+    "mqtt",
+    "rest"
+  ],
+  "author": "Diego Correa T.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IoTSotA/iot-gateway/issues"
+  },
+  "homepage": "https://github.com/IoTSotA/iot-gateway#readme",
+  "devDependencies": {
+    "mosca": "^2.5.2",
+    "request": "^2.83.0"
+  }
+}
