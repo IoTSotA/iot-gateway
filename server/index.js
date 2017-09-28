@@ -25,7 +25,7 @@ openaq.coap_server('air_Q', 5683, function(req, res) {
     res.write(this.name + ' : ' + ' =>\n')
     if (req.url.split('/')[1] == 'air_Q') {
         openaq.formRequest({ 'country': 'CL', 'city': "Parque O'Higgins" }).on('data', function (data) {
-            var towrite = { co: JSON.parse(data).results[0].measurements[0].value }
+            var towrite = JSON.parse(data).results[0].measurements[0]
             res.write(JSON.stringify(towrite))
             res.end();
         })
