@@ -42,16 +42,29 @@ function Gatecore () {
                 console.log('stage_url not defined.')
             }
         }
-        var coap_server =   function (name, callback) {
-            var server = { 'name': name, server: coap.createServer({ type: 'udp6' })}
+        var coap_server =   function (name, port, callback) {
+            var server = { 'name': name, server: coap.createServer({ multicastAddress: '224.0.0.1', type: 'udp4' })}
+            server.server.name = name;
             servers.push(server);
-            servers[servers.length].server.on('request', callback)
-            servers[servers.length].server.listen();
+            servers[servers.length-1].server.on('request', callback)
+            servers[servers.length-1].server.listen(port);
         } 
+        var coap_client = function (coap_url) {
+            var req = coap.request(coap_url)
+
+            req.on('response', function (res) {
+                res.pipe(process.stdout)
+                res.on('end', function () {
+                    // process.exit(0)
+                })
+            })
+
+            req.end()
+        }
         iostream.on('finish', () => {
             formRequest(data)
         });
-        return { iostream: iostream, formRequest: formRequest, coap_server: coap_server }
+        return { iostream: iostream, formRequest: formRequest, coap_server: coap_server, coap_client: coap_client }
     }
     // stage(url);
 
