@@ -34,8 +34,8 @@ function Gatecore () {
                 return request.get(requestParams, function (error, response, body) {
                     if (error) console.log('error:', error); // Print the error if one occurred
                     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-                    iostream.push(body)
-                    iostream.push(null)
+                    // iostream.push(body)
+                    // iostream.push(null)
                     // data=null;
                 })
             } else {
